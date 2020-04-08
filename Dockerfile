@@ -4,7 +4,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include \
     && docker-php-ext-install mysqli gd sockets bcmath \
-    && sed 's/^;date\.timezone[[:space:]]=.*$/date.timezone = "Europe\/Rome"/' &&\
+    && sed 's/^;date\.timezone[[:space:]]=.*$/date.timezone = "Europe\/Rome"/' /usr/local/etc/php/php.ini-production &&\
     a2enmod rewrite
 # Zabbix
 COPY ./data /var/www/html
